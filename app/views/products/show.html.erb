@@ -1,0 +1,12 @@
+<legend>
+  <%= @product.name %>
+  <span class='text-muted'><%= number_to_currency @product.price %></span>
+</legend>
+
+<%= line_chart @product.purchases.group(:purchased_on).sum(:purchased_price),
+               id: 'purchase',
+               library: { animation: { easing: 'easeOutQuad' }} %>
+
+<%# line_chart({ 20.day.ago => 5, 10.day.ago => 10, "2016-010-07 00:00:00 UTC" => 7 }) %>
+
+<%# pie_chart [["Football", 10], ["Basketball", 5]] %>

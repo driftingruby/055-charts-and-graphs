@@ -14,4 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
+
+$(document).on('turbolinks:load', function(event) {
+  var chart = Chartkick.charts['purchase'].getChartObject();
+  setInterval(function(){
+    var indexToUpdate = Math.round(Math.random() * 30);
+    chart.data.datasets[0].data[indexToUpdate] = Math.random() * 100;
+    chart.update();
+  }, 1);
+});
